@@ -1,0 +1,6 @@
+[
+    { "match": "Team A vs Team B", "prediction": "Team A wins" },
+    { "match": "Team C vs Team D", "prediction": "Draw" },
+    { "match": "Team E vs Team F", "prediction": "Team F wins" }
+  ]
+  
