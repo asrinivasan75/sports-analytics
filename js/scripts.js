@@ -1,63 +1,77 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetchNBAData();
-    fetchNFLData();
+    fetchLastGame();
+    fetchSeasonAverages();
+    fetchCareerStats(); // Static for now
   });
   
-  async function fetchNBAData() {
-    const nbaContainer = document.getElementById("nba-games");
-    const today = new Date().toISOString().split("T")[0]; // Format date as YYYY-MM-DD
+  const ballDontLiePlayerId = 237; // LeBron James' Player ID
+  const currentSeason = 2023; // Current NBA Season
+  
+  // Fetch last game stats
+  async function fetchLastGame() {
+    const container = document.getElementById("last-game-stats");
+  
     try {
-      const response = await fetch(`https://www.balldontlie.io/api/v1/games?dates[]=${today}`, {
-        headers: {
-          "Authorization": "Bearer 7f71120c-73b5-4c4d-a0d2-bccdbffb545b"
-        }
-      });
+      const response = await fetch(`https://www.balldontlie.io/api/v1/stats?per_page=5`); // Broader query
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+  
       const data = await response.json();
+      console.log("Last Game Debug Data:", data);
+  
       if (!data.data || data.data.length === 0) {
-        nbaContainer.innerHTML = "<p>No NBA games available for today.</p>";
+        container.innerHTML = "<p>No stats available for debugging purposes.</p>";
         return;
       }
-      nbaContainer.innerHTML = data.data
-        .map(
-          (game) => `
-          <div>
-            <p><strong>${game.home_team.full_name}</strong> vs. <strong>${game.visitor_team.full_name}</strong></p>
-            <p>Start Time: ${new Date(game.date).toLocaleTimeString()}</p>
-          </div>`
-        )
-        .join("");
+  
+      const stats = data.data[0];
+      container.innerHTML = `
+        <div><strong>${stats.pts || 0}</strong> Points</div>
+        <div><strong>${stats.reb || 0}</strong> Rebounds</div>
+        <div><strong>${stats.ast || 0}</strong> Assists</div>
+        <div><strong>${stats.min || "N/A"}</strong> Minutes</div>
+      `;
     } catch (error) {
-      nbaContainer.innerHTML = "<p>Error loading NBA data.</p>";
-      console.error("NBA Fetch Error:", error);
+      container.innerHTML = "<p>Error loading stats.</p>";
+      console.error("Last Game Debug Error:", error);
     }
   }
   
-  async function fetchNFLData() {
-    const nflContainer = document.getElementById("nfl-games");
-    const today = new Date().toISOString().split("T")[0]; // Format date as YYYY-MM-DD
+  // Fetch season averages
+  async function fetchSeasonAverages() {
+    const container = document.getElementById("season-averages-stats");
+  
     try {
-      const response = await fetch(`https://www.balldontlie.io/api/v1/games?dates[]=${today}`, {
-        headers: {
-          "Authorization": "Bearer 7f71120c-73b5-4c4d-a0d2-bccdbffb545b"
-        }
-      });
+      const response = await fetch(`https://www.balldontlie.io/api/v1/season_averages`);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+  
       const data = await response.json();
+      console.log("Season Averages Debug Data:", data);
+  
       if (!data.data || data.data.length === 0) {
-        nflContainer.innerHTML = "<p>No NFL games available for today.</p>";
+        container.innerHTML = "<p>No season averages available for debugging purposes.</p>";
         return;
       }
-      nflContainer.innerHTML = data.data
-        .map(
-          (game) => `
-          <div>
-            <p><strong>${game.home_team.full_name}</strong> vs. <strong>${game.visitor_team.full_name}</strong></p>
-            <p>Start Time: ${new Date(game.date).toLocaleTimeString()}</p>
-          </div>`
-        )
-        .join("");
+  
+      const stats = data.data[0];
+      container.innerHTML = `
+        <div><strong>${stats.pts || 0}</strong> Points Per Game</div>
+        <div><strong>${stats.reb || 0}</strong> Rebounds Per Game</div>
+        <div><strong>${stats.ast || 0}</strong> Assists Per Game</div>
+        <div><strong>${stats.min || "N/A"}</strong> Average Minutes</div>
+      `;
     } catch (error) {
-      nflContainer.innerHTML = "<p>Error loading NFL data.</p>";
-      console.error("NFL Fetch Error:", error);
+      container.innerHTML = "<p>Error loading season averages.</p>";
+      console.error("Season Averages Debug Error:", error);
     }
+  }
+  
+  // Placeholder for career stats
+  function fetchCareerStats() {
+    const container = document.getElementById("career-stats-data");
+    container.innerHTML = `
+      <div><strong>35,367</strong> Total Points</div>
+      <div><strong>10,456</strong> Total Rebounds</div>
+      <div><strong>9,669</strong> Total Assists</div>
+    `;
   }
   

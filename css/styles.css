@@ -1,69 +1,50 @@
-/* General Styles */
+/* Global Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
-    background: #f4f4f4;
     color: #333;
   }
   
-  header {
-    background: #1e3a8a;
-    color: #fff;
+  /* Header */
+  h1 {
     text-align: center;
-    padding: 20px;
-    font-size: 1.8rem;
-    font-weight: bold;
+    margin-top: 20px;
+    color: #111;
   }
   
+  /* Stats Section */
+  .stats-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stats-container h2 {
+    color: #444;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .stats-container div {
+    margin: 10px 0;
+    font-size: 1.1em;
+  }
+  
+  /* Styling Strong Text */
+  strong {
+    color: #111;
+  }
+  
+  /* Footer */
   footer {
     text-align: center;
-    padding: 10px;
-    background: #1e3a8a;
-    color: #fff;
-    position: relative;
-  }
-  
-  main {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 0 20px;
-  }
-  
-  /* Card Styles */
-  .card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  h2 {
-    margin-top: 0;
-  }
-  
-  /* Loading Message */
-  .loading {
-    color: #999;
-    text-align: center;
-    font-size: 1.1rem;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    main {
-      padding: 0 10px;
-    }
-  
-    .card {
-      padding: 15px;
-    }
+    margin-top: 20px;
+    color: #aaa;
   }
   

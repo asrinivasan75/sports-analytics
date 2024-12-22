@@ -3,26 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sports Analytics Dashboard</title>
+  <title>LeBron James Stats</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script defer src="js/scripts.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Sports Analytics Dashboard</h1>
-  </header>
-  <main>
-    <section id="nba-live" class="card">
-      <h2>Live NBA Games</h2>
-      <div id="nba-games" class="loading">Loading NBA games...</div>
-    </section>
-    <section id="nfl-live" class="card">
-      <h2>Live NFL Games</h2>
-      <div id="nfl-games" class="loading">Loading NFL games...</div>
-    </section>
-  </main>
+  <h1>LeBron James Stats</h1>
+  <div id="last-game" class="stats-container">
+    <h2>Last Game Stats</h2>
+    <div id="last-game-stats">Loading...</div>
+  </div>
+  <div id="season-averages" class="stats-container">
+    <h2>Season Averages</h2>
+    <div id="season-averages-stats">Loading...</div>
+  </div>
+  <div id="career-stats" class="stats-container">
+    <h2>Career Stats</h2>
+    <div id="career-stats-data">Loading...</div>
+  </div>
   <footer>
-    <p>&copy; 2024 Sports Analytics Dashboard</p>
+    <p>Data provided by BallDontLie API</p>
   </footer>
 </body>
 </html>
